@@ -2,6 +2,8 @@
 
 A real-time multiplayer minesweeper game built with React, TypeScript, Node.js, and Socket.io.
 
+**🚀 Want to deploy this for players? Check out the [Deployment Guide](DEPLOYMENT.md)!**
+
 ## Features
 
 - **Real-time multiplayer**: Play with multiple players on the same board
@@ -88,15 +90,13 @@ The game will be available at:
 - Frontend: http://localhost:3000
 - Backend: http://localhost:3001
 
-### Production Build
+### Production Deployment
 
-Build both client and server:
+**📘 For detailed deployment instructions to make this available to players, see [DEPLOYMENT.md](DEPLOYMENT.md)**
+
+Quick local production build:
 ```bash
 npm run build
-```
-
-Start the production server:
-```bash
 npm start
 ```
 

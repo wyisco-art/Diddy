@@ -1,0 +1,27 @@
+# Render.com deployment configuration
+# Deploy both frontend and backend together
+
+services:
+  # Backend Service
+  - type: web
+    name: minesweeper-backend
+    runtime: node
+    buildCommand: cd server && npm install && npm run build
+    startCommand: cd server && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: ALLOWED_ORIGINS
+        sync: false # Set this in Render dashboard to your frontend URL
+
+  # Static Site for Frontend
+  - type: web
+    name: minesweeper-frontend
+    runtime: static
+    buildCommand: cd client && npm install && npm run build
+    staticPublishPath: ./client/dist
+    envVars:
+      - key: VITE_BACKEND_URL
+        sync: false # Set this in Render dashboard to your backend URL

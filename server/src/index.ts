@@ -6,13 +6,22 @@ import { GameManager } from './gameManager';
 import { ClientEvents, ServerEvents } from './types';
 
 const app = express();
-app.use(cors());
+
+const allowedOrigins = process.env.ALLOWED_ORIGINS
+  ? process.env.ALLOWED_ORIGINS.split(',')
+  : ['http://localhost:3000'];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true,
+}));
 
 const httpServer = createServer(app);
 const io = new Server<ClientEvents, ServerEvents>(httpServer, {
   cors: {
-    origin: '*',
+    origin: allowedOrigins,
     methods: ['GET', 'POST'],
+    credentials: true,
   },
 });
 

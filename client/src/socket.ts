@@ -16,7 +16,9 @@ interface ClientEvents {
   'new-game': (data: { width: number; height: number; mineCount: number }) => void;
 }
 
-const socket: Socket<ServerEvents, ClientEvents> = io('http://localhost:3001', {
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3001';
+
+const socket: Socket<ServerEvents, ClientEvents> = io(BACKEND_URL, {
   autoConnect: false,
 });
 

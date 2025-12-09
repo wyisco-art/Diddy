@@ -1,0 +1,6 @@
+# Railway.app configuration
+# Create two services in Railway:
+# 1. Backend service - uses this file
+# 2. Frontend service - separate configuration
+
+# This file is for the BACKEND service
